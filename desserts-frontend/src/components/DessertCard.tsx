@@ -16,7 +16,7 @@ const DessertCard = (prop: DessertCardProp) => {
   return (
     <div className="dessert-card">
         <img src={prop.image.desktop}/>
-        <AddToCartBtn/>
+        <AddToCartBtn {...prop}/>
         <h4>{prop.category}</h4>
         <h2>{prop.name}</h2>
         <h3>${prop.price}</h3>

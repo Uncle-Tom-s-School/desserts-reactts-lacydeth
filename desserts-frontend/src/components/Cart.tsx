@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import CartItem from "./CartItem"
+import { CartCtx } from "../App"
 
 export type CartItemType = {
     item: {
@@ -11,21 +12,28 @@ export type CartItemType = {
 
 const Cart = () => {
 
-    const [cart, setCart] = useState<CartItemType[]>([])
+    const [visableCart, setVisableCart] = useState<CartItemType[]>([])
+
+    const cartctx = useContext(CartCtx)
+    
+    if(!cartctx) {
+        throw new Error("Hiba!")
+    }
+    const {cart} = cartctx;
 
     useEffect(() => {
-        setCart([
-            {item: {
-                name: "Piskóta",
-                price:5
-            },  quantity: 10}
-        ])
-    })
+        let li:CartItemType[] = []
+        cart.forEach(cartItem => {li.push({
+            item: {name:cartItem.name, price: cartItem.price},
+            quantity: 1
+        })})
+        setVisableCart(li)
+    },[cartctx])
 
     return (
         <div>
-            <h2>Your Cart ({cart.length})</h2>
-            {cart.map(cart => <CartItem {...cart}/>)}
+            <h2>Your Cart ({visableCart.length})</h2>
+            {visableCart.map(cart => <CartItem {...cart}/>)}
         </div>
     )
 }
