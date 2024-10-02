@@ -106,9 +106,9 @@ button:focus-visible {
 .dessert-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  max-width: 800px;
   margin: auto;
   gap: 20px;
+  margin-top: 20px;
 }
 .dessert-card>img {
   width: 100%;
@@ -122,4 +122,40 @@ button:focus-visible {
 }
 .dessert-card:has(.used)>img{
   border: 2px solid var(--Red);
+}
+.home {
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 30px;
+  margin-top: 50px;
+}
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid lightgray;
+  padding: 10px 0px;
+}
+.quantity {
+  color: var(--Red);
+  font-weight: bold;
+  margin-right: 10px;
+}
+.sumPrice {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.cart-item button {
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  padding: 0px;
+  border: 1px solid black;
+  background: white;
+  border-radius: 50%;
 }
